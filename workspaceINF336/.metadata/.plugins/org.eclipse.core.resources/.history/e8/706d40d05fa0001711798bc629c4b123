@@ -1,0 +1,7 @@
+package br.com.unicamp.inf321.models;
+
+import org.graphwalker.core.machine.ExecutionContext;
+
+public class Grupo3Model extends ExecutionContext implements casodeuso2 {
+
+}
