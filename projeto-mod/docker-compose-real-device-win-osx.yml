@@ -1,0 +1,23 @@
+# Note: It requires docker-compose 1.13.0
+#
+# Usage: docker-compose up -d
+version: "2.0"
+
+services:
+  appium:
+    image: otonielisidoro/docker-android-real-device
+    privileged: true
+    volumes:
+      - $PWD/apk:/root/tmp
+      - /dev/bus/usb:/dev/bus/usb
+      - ~/.android:/root/.android
+      - $PWD/video:/tmp/video
+    ports:
+      - 6080:6080
+      - 4723:4723
+      - 5678:5678
+      - 5555:5555
+    environment:
+      - REAL_DEVICE=true
+      - AUTO_RECORD=true
+      - APPIUM=true

@@ -1,0 +1,21 @@
+# Note: It requires docker-compose 1.13.0
+#
+# Usage: docker-compose up -d
+version: "2.0"
+
+services:
+  appium:
+    image: otonielisidoro/docker-android-x86-7.0
+    privileged: true
+    volumes:
+      - $PWD/apk:/root/tmp
+      - $PWD/video:/tmp/video
+    ports:
+      - 6080:6080
+      - 4723:4723
+      - 5678:5678
+    environment:
+      - REAL_DEVICE=false
+      - AUTO_RECORD=true
+      - DEVICE=Samsung Galaxy S6
+      - APPIUM=true
