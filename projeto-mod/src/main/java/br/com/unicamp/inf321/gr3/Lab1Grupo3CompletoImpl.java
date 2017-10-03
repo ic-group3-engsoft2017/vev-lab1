@@ -1,14 +1,11 @@
 package br.com.unicamp.inf321.gr3;
 
-import br.com.unicamp.inf321.Lab1Grupo3Completo;
-import br.com.unicamp.inf321.models.screenobjects.CreateAccountScreen;
-import br.com.unicamp.inf321.models.screenobjects.ForgotPasswordScreen;
-import br.com.unicamp.inf321.models.screenobjects.LoginScreen;
-import br.com.unicamp.inf321.models.screenobjects.WelcomeScreen;
+import br.com.unicamp.inf321.models.screenobjects.*;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.graphwalker.java.annotation.GraphWalker;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 
@@ -16,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
+@GraphWalker(value = "random(edge_coverage(100))", start = "v_ClientNotRunning")
 public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     public static final int IMPLICITLY_WAIT_TIME_OUT = 20;
     private AndroidDriver<MobileElement> driver;
@@ -23,6 +21,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     private LoginScreen loginScreen;
     private ForgotPasswordScreen forgotPasswordScreen;
     private CreateAccountScreen createAccountScreen;
+    private CartScreen cartScreen;
 
     public Lab1Grupo3CompletoImpl(AndroidDriver<MobileElement> driver) {
         this.driver = driver;
@@ -54,11 +53,16 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_back() {
-
+        driver.navigate().back();
     }
 
     @Override
     public void v_FinalizarPedido() {
+        if(!cartScreen.getProductList().isDisplayed()) {
+            PageFactory.initElements(
+                    new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), cartScreen);
+        }
+        cartScreen.getPlaceOrder();
 
     }
 
