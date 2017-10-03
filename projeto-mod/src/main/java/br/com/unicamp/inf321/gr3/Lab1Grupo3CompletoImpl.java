@@ -7,6 +7,14 @@ import br.com.unicamp.inf321.models.screenobjects.LoginScreen;
 import br.com.unicamp.inf321.models.screenobjects.WelcomeScreen;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.StrictAssertions.assertThat;
 
 public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     public static final int IMPLICITLY_WAIT_TIME_OUT = 20;
@@ -16,14 +24,32 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     private ForgotPasswordScreen forgotPasswordScreen;
     private CreateAccountScreen createAccountScreen;
 
+    public Lab1Grupo3CompletoImpl(AndroidDriver<MobileElement> driver) {
+        this.driver = driver;
+        this.welcomeScreen = new WelcomeScreen();
+        this.loginScreen = new LoginScreen();
+        this.forgotPasswordScreen = new ForgotPasswordScreen();
+        this.createAccountScreen = new CreateAccountScreen();
+    }
+
     @Override
     public void v_ClientNotRunning() {
-
+        if (!driver.isLocked()) {
+            driver.launchApp();
+        }
+        PageFactory.initElements(
+                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
+        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
     }
 
     @Override
     public void v_TelaCriarConta() {
-
+        PageFactory.initElements(
+                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), createAccountScreen);
+        assertThat(isElementPresent(createAccountScreen.getContinueButton())).isTrue();
+        assertThat(isElementPresent(createAccountScreen.getCreateAccountButton())).isTrue();
     }
 
     @Override
@@ -153,7 +179,12 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_Logar() {
-
+        driver.launchApp();
+        PageFactory.initElements(
+                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
+        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
     }
 
     @Override
@@ -215,4 +246,14 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     public void e_segue() {
 
     }
+
+    private Boolean isElementPresent(AndroidElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
