@@ -69,7 +69,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_pesquisar_palavra_chave() {
-
+        driver.findElement()
 
     }
 
@@ -140,7 +140,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void V_Tela_PopUp() {
-
+        // ?
     }
 
     @Override
@@ -157,7 +157,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void v_Foto_navegada() {
-
+        // ?
     }
 
     @Override
@@ -167,17 +167,17 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_boasVindas() {
-
+        // ?
     }
 
     @Override
     public void v_Tela_de_Pedido() {
-
+        // ?
     }
 
     @Override
     public void e_Navegar_foto() {
-
+        // ?
     }
 
     @Override
@@ -233,27 +233,31 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void v_TelaLogin() {
-
+        AmazonShoppingOfertasModel.loginScreen(loginScreen, driver);
     }
 
     @Override
     public void v_TelaPrincipal() {
-
+        PageFactory.initElements(
+                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
+        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
     }
 
     @Override
     public void e_opcao_entrar() {
-
+        // ?
     }
 
     @Override
     public void e_voltar_Tela_Home() {
-
+        // ?
     }
 
     @Override
     public void e_segue() {
-
+        // ?
     }
 
     private Boolean isElementPresent(AndroidElement element) {

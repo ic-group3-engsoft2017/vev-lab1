@@ -20,6 +20,8 @@ public class WelcomeScreen {
 	@AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/skip_sign_in_button")
 	@AndroidFindBy(xpath = "//*[@text='Pular loginScreen']")
 	private AndroidElement skipLoginButton;
+
+
 	
 	public AndroidElement getLoginButton() {
 		return loginButton;

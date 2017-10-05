@@ -9,27 +9,27 @@ public class CartScreen {
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "//*[@id=\"sc-active-cart\"]/div", priority = 1)
-    @AndroidFindBy(id = "sc-cart-header", priority = 2)
+    @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/sc-cart-header", priority = 2)
     private AndroidElement screenTitle;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "//*[@id=\"activeCartViewForm\"]/div[2]/div", priority = 1)
-    @AndroidFindBy(id = "sc-list-item", priority = 2)
+    @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/sc-list-item", priority = 2)
     private AndroidElement productList;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "//*[@id=\"sc-empty-cart\"]/div/h1", priority = 1)
-    @AndroidFindBy(id = "sc-empty-cart", priority = 2)
+    @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/sc-empty-cart", priority = 2)
     private AndroidElement emptyCartText;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "//*[@id=\"nav-button-search\"]", priority = 1)
-    @AndroidFindBy(id = "nav-button-search", priority = 2)
+    @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/nav-button-search", priority = 2)
     private AndroidElement searchButton;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "", priority = 1)
-    @AndroidFindBy(id = "continue", priority = 2)
+    @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/continue", priority = 2)
     private AndroidElement placeOrder;
 
 
