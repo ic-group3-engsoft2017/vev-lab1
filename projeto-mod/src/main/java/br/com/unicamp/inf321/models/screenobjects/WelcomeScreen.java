@@ -8,7 +8,7 @@ import io.appium.java_client.pagefactory.LocatorGroupStrategy;
 public class WelcomeScreen {
 	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
 	@AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/sign_in_button")
-	@AndroidFindBy(xpath = "//*[@text='Já é um cliente? Faça login']")
+	@AndroidFindBy(xpath = "//*[@text='Já é um cliente? Faça loginScreen']")
 	private AndroidElement loginButton;
 
 	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
@@ -18,7 +18,7 @@ public class WelcomeScreen {
 
 	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
 	@AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/skip_sign_in_button")
-	@AndroidFindBy(xpath = "//*[@text='Pular login']")
+	@AndroidFindBy(xpath = "//*[@text='Pular loginScreen']")
 	private AndroidElement skipLoginButton;
 	
 	public AndroidElement getLoginButton() {

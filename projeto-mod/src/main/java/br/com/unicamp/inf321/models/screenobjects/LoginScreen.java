@@ -7,7 +7,7 @@ import io.appium.java_client.pagefactory.LocatorGroupStrategy;
 
 public class LoginScreen {
   
-	@AndroidFindBy(xpath = "//*[@content-desc='Fazer login' and @class='android.view.View']")
+	@AndroidFindBy(xpath = "//*[@content-desc='Fazer loginScreen' and @class='android.view.View']")
   private AndroidElement screenTitle;
 
   @AndroidFindBy(id = "ap_email")
@@ -22,7 +22,7 @@ public class LoginScreen {
   private AndroidElement forgotPassword;
 
   @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
-  @AndroidFindBy(xpath = "//*[@content-des=\"Fazer login\" and @class='android.widget.Button']", priority = 1)
+  @AndroidFindBy(xpath = "//*[@content-des=\"Fazer loginScreen\" and @class='android.widget.Button']", priority = 1)
   @AndroidFindBy(id = "signInSubmit", priority = 2)
   private AndroidElement loginButton;
 

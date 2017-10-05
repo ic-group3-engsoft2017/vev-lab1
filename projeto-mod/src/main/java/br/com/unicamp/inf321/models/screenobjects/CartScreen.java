@@ -23,14 +23,15 @@ public class CartScreen {
     private AndroidElement emptyCartText;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
-    @AndroidFindBy(xpath = "", priority = 1)
-    @AndroidFindBy(id = "continue", priority = 2)
+    @AndroidFindBy(xpath = "//*[@id=\"nav-button-search\"]", priority = 1)
+    @AndroidFindBy(id = "nav-button-search", priority = 2)
     private AndroidElement searchButton;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
     @AndroidFindBy(xpath = "", priority = 1)
     @AndroidFindBy(id = "continue", priority = 2)
     private AndroidElement placeOrder;
+
 
     public AndroidElement getScreenTitle() {
         return screenTitle;

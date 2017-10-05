@@ -139,6 +139,10 @@ public class AmazonShoppingOfertasModel extends ExecutionContext implements Amaz
 
   @Override
   public void v_TelaLogin() {
+    loginScreen(loginScreen, driver);
+  }
+
+  public static void loginScreen(LoginScreen loginScreen, AndroidDriver<MobileElement> driver) {
     PageFactory.initElements(
         new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), loginScreen);
     assertThat(isElementPresent(loginScreen.getScreenTitle())).isTrue();
@@ -159,7 +163,7 @@ public class AmazonShoppingOfertasModel extends ExecutionContext implements Amaz
     welcomeScreen.getLoginButton().click();
   }
 
-  private Boolean isElementPresent(AndroidElement element) {
+  private static Boolean isElementPresent(AndroidElement element) {
     try {
       return element.isDisplayed();
     } catch (NoSuchElementException e) {

@@ -1,5 +1,6 @@
 package br.com.unicamp.inf321.gr3;
 
+import br.com.unicamp.inf321.models.AmazonShoppingOfertasModel;
 import br.com.unicamp.inf321.models.screenobjects.*;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -62,18 +63,19 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
             PageFactory.initElements(
                     new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), cartScreen);
         }
-        cartScreen.getPlaceOrder();
+        cartScreen.getPlaceOrder().click();
 
     }
 
     @Override
     public void e_pesquisar_palavra_chave() {
 
+
     }
 
     @Override
     public void e_opcao_criar() {
-
+        welcomeScreen.getCreateAccountButton().click();
     }
 
     @Override
@@ -143,7 +145,14 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void v_Tela_de_carrinho() {
-
+        PageFactory.initElements(
+                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS),
+                cartScreen);
+        assertThat(isElementPresent(cartScreen.getEmptyCartText())).isTrue();
+        assertThat(isElementPresent(cartScreen.getPlaceOrder())).isTrue();
+        assertThat(isElementPresent(cartScreen.getProductList())).isTrue();
+        assertThat(isElementPresent(cartScreen.getScreenTitle())).isTrue();
+        assertThat(isElementPresent(cartScreen.getSearchButton())).isTrue();
     }
 
     @Override
@@ -153,7 +162,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_opcao_logar() {
-
+        welcomeScreen.getLoginButton().click();
     }
 
     @Override
@@ -173,57 +182,53 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_Exit() {
-
+        driver.closeApp();
     }
 
     @Override
     public void e_Comprar_na_hora() {
+        // Criar Screen de Compra de produto
 
     }
 
     @Override
     public void e_Logar() {
-        driver.launchApp();
-        PageFactory.initElements(
-                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
-        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
-        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
-        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
+        AmazonShoppingOfertasModel.loginScreen(loginScreen, driver);
     }
 
     @Override
     public void e_fecharTelaDetalhamento() {
-
+        driver.navigate().back();
     }
 
     @Override
     public void e_Home() {
-
+        driver.navigate().to("home");
     }
 
     @Override
     public void e_FecharCompra() {
-
+        cartScreen.getPlaceOrder().click();
     }
 
     @Override
     public void e_opcao() {
-
+        //?
     }
 
     @Override
     public void e_pesquisar_uma_palavra_chave() {
-
+        //?
     }
 
     @Override
     public void e_pesquisar_vazio() {
-
+        cartScreen.getSearchButton().click();
     }
 
     @Override
     public void e_opcao_esq() {
-
+        // ?
     }
 
     @Override
