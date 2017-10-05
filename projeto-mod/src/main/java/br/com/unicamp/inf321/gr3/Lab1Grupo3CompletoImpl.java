@@ -69,8 +69,9 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_pesquisar_palavra_chave() {
-        driver.findElement()
-
+        welcomeScreen.getSearchBar().click();
+        welcomeScreen.getSearchBar().replaceValue("Sony X");
+        welcomeScreen.getSearchButton().click();
     }
 
     @Override
@@ -80,7 +81,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_Adicionar_no_carrinho() {
-
+        // Não tem botão de adicionar no carrinho mais, parece que foi removido do app.
     }
 
     @Override
