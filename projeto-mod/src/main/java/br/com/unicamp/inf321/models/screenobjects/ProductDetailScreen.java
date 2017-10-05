@@ -28,9 +28,9 @@ public class ProductDetailScreen {
     private AndroidElement goHome;
 
     @HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
-    @AndroidFindBy(xpath = "//*[@content-desc=\"Criar uma nova conta Amazon\"]", priority = 1)
-    @AndroidFindBy(id = "createAccountSubmit", priority = 2)
-    private AndroidElement createAccountButton;
+    @AndroidFindBy(xpath = "//*[@id=\"anonCarousel10\"]/ol/li[3]/span/a/div/div", priority = 1)
+    @AndroidFindBy(id = "image-wrapper", priority = 2)
+    private AndroidElement productImage;
 
 
 }
