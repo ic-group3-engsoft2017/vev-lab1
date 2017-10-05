@@ -31,6 +31,22 @@ public class WelcomeScreen {
 	@AndroidFindBy(xpath = "//*[@id=\"nav-button-search\"]", priority = 1)
 	@AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/nav-button-search", priority = 2)
 	private AndroidElement searchButton;
+	
+	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
+	@AndroidFindBy(xpath = "//*[@id=\"nav-gwbar\"]/a[1]", priority = 1)
+	private AndroidElement departamentsTabItem;
+	
+	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
+	@AndroidFindBy(xpath = "//*[@id=\"nav-gwbar\"]/a[2]", priority = 1)
+	private AndroidElement primeTabItem;
+	
+	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
+	@AndroidFindBy(xpath = "///*[@id=\"nav-gwbar\"]/a[3]", priority = 1)
+	private AndroidElement videoTabItem;
+	
+	@HowToUseLocators(androidAutomation = LocatorGroupStrategy.ALL_POSSIBLE)
+	@AndroidFindBy(xpath = "//*[@id=\"nav-gwbar\"]/a[4]", priority = 1)
+	private AndroidElement musicTabItem;
 
 	public AndroidElement getSearchBar() {
 		return searchBar;
@@ -70,5 +86,37 @@ public class WelcomeScreen {
 
 	public void setSearchButton(AndroidElement searchButton) {
 		this.searchButton = searchButton;
+	}
+
+	public AndroidElement getDepartamentsTabItem() {
+		return departamentsTabItem;
+	}
+
+	public void setDepartamentsTabItem(AndroidElement departamentsTabItem) {
+		this.departamentsTabItem = departamentsTabItem;
+	}
+
+	public AndroidElement getPrimeTabItem() {
+		return primeTabItem;
+	}
+
+	public void setPrimeTabItem(AndroidElement primeTabItem) {
+		this.primeTabItem = primeTabItem;
+	}
+
+	public AndroidElement getVideoTabItem() {
+		return videoTabItem;
+	}
+
+	public void setVideoTabItem(AndroidElement videoTabItem) {
+		this.videoTabItem = videoTabItem;
+	}
+
+	public AndroidElement getMusicTabItem() {
+		return musicTabItem;
+	}
+
+	public void setMusicTabItem(AndroidElement musicTabItem) {
+		this.musicTabItem = musicTabItem;
 	}
 }

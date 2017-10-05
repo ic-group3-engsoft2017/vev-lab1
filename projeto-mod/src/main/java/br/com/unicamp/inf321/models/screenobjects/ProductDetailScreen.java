@@ -32,5 +32,53 @@ public class ProductDetailScreen {
     @AndroidFindBy(id = "image-wrapper", priority = 2)
     private AndroidElement productImage;
 
+	public AndroidElement getScreenTitle() {
+		return screenTitle;
+	}
+
+	public void setScreenTitle(AndroidElement screenTitle) {
+		this.screenTitle = screenTitle;
+	}
+
+	public AndroidElement getEmailField() {
+		return emailField;
+	}
+
+	public void setEmailField(AndroidElement emailField) {
+		this.emailField = emailField;
+	}
+
+	public AndroidElement getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(AndroidElement passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public AndroidElement getAddToCart() {
+		return addToCart;
+	}
+
+	public void setAddToCart(AndroidElement addToCart) {
+		this.addToCart = addToCart;
+	}
+
+	public AndroidElement getGoHome() {
+		return goHome;
+	}
+
+	public void setGoHome(AndroidElement goHome) {
+		this.goHome = goHome;
+	}
+
+	public AndroidElement getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(AndroidElement productImage) {
+		this.productImage = productImage;
+	}
+
 
 }

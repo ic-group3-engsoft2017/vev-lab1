@@ -20,6 +20,7 @@ import org.graphwalker.java.test.TestExecutor;
 
 @SuppressWarnings("rawtypes")
 public class GraphWalkerTestBuilder {
+	
   private List<Context> contexts = new ArrayList<>();
   private Set<Observer> observers = new HashSet<>();
 

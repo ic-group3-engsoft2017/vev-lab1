@@ -1,18 +1,24 @@
 package br.com.unicamp.inf321.gr3;
 
-import br.com.unicamp.inf321.models.AmazonShoppingOfertasModel;
-import br.com.unicamp.inf321.models.screenobjects.*;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import static org.assertj.core.api.StrictAssertions.assertThat;
+
+import java.util.concurrent.TimeUnit;
+
 import org.graphwalker.java.annotation.GraphWalker;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import br.com.unicamp.inf321.models.AmazonShoppingOfertasModel;
+import br.com.unicamp.inf321.models.screenobjects.CartScreen;
+import br.com.unicamp.inf321.models.screenobjects.CreateAccountScreen;
+import br.com.unicamp.inf321.models.screenobjects.ForgotPasswordScreen;
+import br.com.unicamp.inf321.models.screenobjects.LoginScreen;
+import br.com.unicamp.inf321.models.screenobjects.ProductDetailScreen;
+import br.com.unicamp.inf321.models.screenobjects.WelcomeScreen;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 @GraphWalker(value = "random(edge_coverage(100))", start = "v_ClientNotRunning")
 public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
@@ -23,6 +29,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     private ForgotPasswordScreen forgotPasswordScreen;
     private CreateAccountScreen createAccountScreen;
     private CartScreen cartScreen;
+    private ProductDetailScreen productDetailScreen;
 
     public Lab1Grupo3CompletoImpl(AndroidDriver<MobileElement> driver) {
         this.driver = driver;
@@ -91,7 +98,13 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void V_Tela_Home() {
-
+        PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
+        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getDepartamentsTabItem())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getPrimeTabItem())).isTrue();
+        assertThat(isElementPresent(welcomeScreen.getVideoTabItem())).isTrue();
     }
 
     @Override
@@ -101,13 +114,24 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void V_Tela_de_detalhe_de_produto() {
-
+    	//duplicated
+        testeDetailsScreen();
     }
 
     @Override
     public void v_Tela_de_detalhe_de_produto() {
-
+        testeDetailsScreen();
     }
+
+	private void testeDetailsScreen() {
+		PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), productDetailScreen);
+        assertThat(isElementPresent(productDetailScreen.getScreenTitle())).isTrue();
+        assertThat(isElementPresent(productDetailScreen.getEmailField())).isTrue();
+        assertThat(isElementPresent(productDetailScreen.getPasswordField())).isTrue();
+        assertThat(isElementPresent(productDetailScreen.getAddToCart())).isTrue();
+        assertThat(isElementPresent(productDetailScreen.getGoHome())).isTrue();
+        assertThat(isElementPresent(productDetailScreen.getProductImage())).isTrue();
+	}
 
     @Override
     public void e_tipo_conta() {
@@ -126,7 +150,10 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void v_TelaRecuperarSenha() {
-
+		PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), forgotPasswordScreen);
+        assertThat(isElementPresent(forgotPasswordScreen.getScreenTitle())).isTrue();
+        assertThat(isElementPresent(forgotPasswordScreen.getEmailField())).isTrue();
+        assertThat(isElementPresent(forgotPasswordScreen.getHelpText())).isTrue();
     }
 
     @Override
