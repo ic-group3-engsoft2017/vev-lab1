@@ -9,6 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 
 import br.com.unicamp.inf321.models.AmazonShoppingOfertasModel;
+import br.com.unicamp.inf321.models.screenobjects.BuyProductScreen;
 import br.com.unicamp.inf321.models.screenobjects.CartScreen;
 import br.com.unicamp.inf321.models.screenobjects.CreateAccountScreen;
 import br.com.unicamp.inf321.models.screenobjects.ForgotPasswordScreen;
@@ -30,6 +31,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
     private CreateAccountScreen createAccountScreen;
     private CartScreen cartScreen;
     private ProductDetailScreen productDetailScreen;
+    private BuyProductScreen buyProductScreen;
 
     public Lab1Grupo3CompletoImpl(AndroidDriver<MobileElement> driver) {
         this.driver = driver;
@@ -98,14 +100,18 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void V_Tela_Home() {
-        PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
+        testeTelaPrincipal();
+    }
+
+	private void testeTelaPrincipal() {
+		PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
         assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
         assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
         assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
         assertThat(isElementPresent(welcomeScreen.getDepartamentsTabItem())).isTrue();
         assertThat(isElementPresent(welcomeScreen.getPrimeTabItem())).isTrue();
         assertThat(isElementPresent(welcomeScreen.getVideoTabItem())).isTrue();
-    }
+	}
 
     @Override
     public void v_BoasVindasNovaConta() {
@@ -215,8 +221,18 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void e_Comprar_na_hora() {
-        // Criar Screen de Compra de produto
-
+        PageFactory.initElements(new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), buyProductScreen);
+        assertThat(isElementPresent(buyProductScreen.getScreenTitle())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getTitle())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getImages())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getListPriceLabel())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getListPriceValue())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getDailyPriceLabel())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getDailyPriceValue())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getOffersEndLabel())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getAvailabilityLabel())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getQuantitySelect())).isTrue();
+        assertThat(isElementPresent(buyProductScreen.getAddToCardButton())).isTrue();
     }
 
     @Override
@@ -266,11 +282,7 @@ public class Lab1Grupo3CompletoImpl implements Lab1Grupo3Completo {
 
     @Override
     public void v_TelaPrincipal() {
-        PageFactory.initElements(
-                new AppiumFieldDecorator(driver, IMPLICITLY_WAIT_TIME_OUT, TimeUnit.SECONDS), welcomeScreen);
-        assertThat(isElementPresent(welcomeScreen.getLoginButton())).isTrue();
-        assertThat(isElementPresent(welcomeScreen.getCreateAccountButton())).isTrue();
-        assertThat(isElementPresent(welcomeScreen.getSkipLoginButton())).isTrue();
+        testeTelaPrincipal();
     }
 
     @Override
